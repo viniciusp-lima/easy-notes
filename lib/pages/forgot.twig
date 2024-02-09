@@ -1,0 +1,20 @@
+<main class="d-flex align-items-center justify-content-center py-4 bg-body-tertiary">
+    <div class="toast-wrapper"></div>
+    <form action="" class="form-forgot js-action-submit" data-action="controller:auth__change_password">
+        <h1 class="h3 mb-3 fw-normal text-center">{{ 'Reset your password' | trans }}</h1>
+        <p class="mb-4 fs-7">{{ "Enter your e-mail address and we'll send you a new temporary password." | trans }}</p>
+        <div class="mb-3">
+            <label class="visually-hidden" for="forgot[email]">{{ 'Email' | trans }}</label>
+            <input type="email" class="form-control" name="forgot[email]" id="forgot[email]" placeholder="{{ 'Email' | trans }}" required>
+        </div>
+        <div class="hide">
+            <label for="forgot[validation]"></label>
+            <input type="checkbox" name="forgot[validation]" id="forgot[validation]">
+        </div>
+
+        <button class="btn btn-primary w-100 py-2" type="submit">{{ 'Send reset email' | trans }}</button>
+        <p class="mt-5 mb-3 text-muted text-center fs-7">
+            {{ "Remembered your password?" | trans }} <a href="/login" class="text-primary link-hover-50">{{ 'Log in' | trans }}</a>
+        </p>
+    </form>
+</main>

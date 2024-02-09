@@ -1,0 +1,15 @@
+<div class="modal fade {{ modalSize }}" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+			<div class="app-modal-header">
+				<h4 class="app-modal-title"></h4>
+				<button type="button" class="app-btn-close" data-bs-dismiss="modal">
+					<i class="bi bi-x d-flex"></i>
+				</button>
+			</div>
+			<div class="app-modal-body">
+				{{ content | raw }}
+			</div>
+		</div>
+    </div>
+</div>

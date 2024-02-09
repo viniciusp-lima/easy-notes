@@ -1,0 +1,55 @@
+<div class="notify-app">
+    <div class="left border-end">
+        <div class="px-3 py-2 menu-bar d-flex align-items-center justify-content-between border-bottom">
+            <button class="icon-button btn-menu btn"><i class="bi bi-list"></i></button>
+            <h5 class="m-0">Easey Notes</h5>
+            <button class="icon-button btn-new-note btn js-create-folder" data-action="controller:app__new_folder" data-action-success="helper:app__folders" data-update-target=".file-list">
+                <i class="bi bi-folder-plus"></i>
+            </button>
+        </div>
+        <div>
+            <div class="search-wrapper px-3 py-2 border-bottom d-flex align-items-center gap-3">
+                <button class="icon-button btn d-flex align-items-center"><i class="bi bi-search text-secondary w-100 fs-7"></i></button>
+                <input type="text" class="flex-grow-1" name="seach" id="search" placeholder="{{ 'Search notes' | trans }}">
+            </div>
+            <div class="file-list">
+                <ul class="folder-list m-0 p-0">
+                    {% for folder in folders %}
+                    <li class="folder">
+                        <a href="" class="d-flex align-items-center justify-content-between gap-3 px-4 py-2">
+                            <div class="d-flex align-items-center flex-grow-1 gap-3 overflow-hidden">
+                                <i class="bi bi-folder-fill fs-3"></i>
+                                <div class="flex-grow-1 overflow-hidden">
+                                    <p class="m-0 text-truncate">{{ folder.name }}</p>
+                                    <small class="d-block text-secondary fs-8">{{ 'Total notes:' }} {{ folder.total_notes }}</small>
+                                </div>
+                            </div>
+                            <div>
+                                <button class="icon-button btn d-flex align-items-center teste">
+                                    <i class="bi bi-three-dots-vertical w-100"></i>
+                                </button>
+                            </div>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <main class="right">
+        <div class="notify-toolbar px-3 py-2 border-bottom d-flex align-items-center justify-content-between">
+            <div class="left">
+                <button class="icon-button btn-menu btn"><i class="bi bi-grid-1x2"></i></button>
+            </div>
+            <div class="right">
+                <button class="icon-button btn-menu btn"><i class="bi bi-info-circle"></i></button>
+                <button class="icon-button btn-menu btn"><i class="bi bi-check-circle"></i></button>
+                <button class="icon-button btn-menu btn"><i class="bi bi-sliders2"></i></button>
+            </div>
+        </div>
+        <div class="notify-content p-5">
+            <div class="message"></div>
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+</div>

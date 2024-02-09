@@ -1,0 +1,13 @@
+/* LOGIN */
+.login-page main,
+.signup-page main,
+.forgot-page main {
+    height: 100vh;
+}
+
+.form-signin,
+.form-signup,
+.form-forgot {
+    width: 420px;
+    padding: 1rem;
+}

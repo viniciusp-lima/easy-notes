@@ -1,0 +1,10 @@
+{% extends 'base_app.twig' %}
+
+{% block content %}
+    <div class="alert alert-danger" role="alert">
+        <p class="m-0">
+            {{ 'Page not found!' | trans }} 
+            <a class="alert-link link-hover-50" href="?route_name=app__index">{{ 'Go to dashboard' | trans }}</a>
+        </p>
+    </div>
+{% endblock %}

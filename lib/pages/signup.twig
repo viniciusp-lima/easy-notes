@@ -1,0 +1,29 @@
+<main class="d-flex align-items-center justify-content-center py-4 bg-body-tertiary">
+    <div class="toast-wrapper"></div>
+    <form action="" class="form-signup js-action-submit" data-action="controller:auth__create_new_user">
+        <h1 class="h3 mb-5 fw-normal text-center">{{ 'Sign up' | trans }}</h1>
+        <div class="row g-3">
+            <div class="mb-3 col">
+                <label class="visually-hidden" for="user[first_name]">{{ 'First name' | trans }}</label>
+                <input type="text" class="form-control" name="user[first_name]" id="user[first_name]" placeholder="{{ 'First name' | trans }}" required>
+            </div>
+            <div class="mb-3 col">
+                <label class="visually-hidden" for="user[last_name]">{{ 'Last name' | trans }}</label>
+                <input type="text" class="form-control" name="user[last_name]" id="user[last_name]" placeholder="{{ 'Last name' | trans }}" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="visually-hidden" for="user[email]">{{ 'Email' | trans }}</label>
+            <input type="email" class="form-control" name="user[email]" id="user[email]" placeholder="{{ 'Email' | trans }}" required>
+        </div>
+        <div class="mb-3">
+            <label class="visually-hidden" for="user[password]">{{ 'Password' | trans }}</label>
+            <input type="password" class="form-control" name="user[password]" id="user[password]" placeholder="{{ 'Password' | trans }}" required>
+        </div>
+
+        <button class="btn btn-primary w-100 py-2 mt-3" type="submit">{{ 'Sign up' | trans }}</button>
+        <p class="mt-5 mb-3 text-muted text-center fs-7">
+            {{ 'Already have an account?' | trans }} <a href="/login" class="text-primary link-hover-50">{{ 'Log in' | trans }}</a>
+        </p>
+    </form>
+</main>

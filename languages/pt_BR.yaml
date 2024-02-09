@@ -1,0 +1,31 @@
+# ------------ LOGIN ------------ #
+Log in: Conecte-se
+Email: E-mail
+Password: Senha
+Remember me: Lembre de mim
+Invalid email: E-mail inválido
+Incorrect email or password: E-mail ou senha incorreto
+Don't have an account?: Não tem uma conta?
+Forgot your password?: Esqueceu sua senha?
+
+# ------------ SIGN UP ------------ #
+Sign up: Inscreva-se
+First name: Primeiro nome
+Last name: Sobrenome
+Already have an account?: Já tem uma conta?
+
+# ------------ FORGOT ------------ #
+Reset your password: Redefinir sua senha
+Enter your e-mail address and we'll send you a new temporary password.: Digite seu endereço de e-mail e lhe enviaremos uma nova senha temporária.
+Send reset email: Enviar e-mail de redefinição
+Remembered your password?: Lembrou-se da sua senha?
+Email not found: E-mail não encontrado
+An email containing a new password has been successfully sent to the address provided.: Um e-mail contendo uma nova senha foi enviado com sucesso para o endereço fornecido.
+
+# ------------ PAGE NOT FOUND ------------ #
+Go to dashboard: Ir para o painel
+Page not found!: Página não encontrada!
+
+
+Save: Salvar
+Close: Fechar

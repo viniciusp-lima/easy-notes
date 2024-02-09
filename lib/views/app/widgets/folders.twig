@@ -1,0 +1,18 @@
+<ul class="folder-list m-0 p-0">
+    {% for folder in folders %}
+    <li class="folder">
+        <a href="" class="d-flex align-items-center justify-content-between gap-3 px-4 py-2">
+            <div class="d-flex align-items-center gap-3 overflow-hidden">
+                <i class="bi bi-folder-fill fs-3"></i>
+                <div class="flex-grow-1 overflow-hidden">
+                    <p class="m-0 text-truncate">{{ folder.name }}</p>
+                    <small class="d-block text-secondary fs-8">{{ 'Total notes:' }} {{ folder.total_notes }}</small>
+                </div>
+            </div>
+            <div>
+                <button class="icon-button btn d-flex align-items-center"><i class="bi bi-three-dots-vertical w-100"></i></button>
+            </div>
+        </a>
+    </li>
+    {% endfor %}
+</ul>

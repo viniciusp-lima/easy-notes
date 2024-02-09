@@ -1,0 +1,31 @@
+# ------------ LOGIN ------------ #
+Log in: Log in
+Email: Email
+Password: Password
+Remember me: Remember me
+Invalid email: Invalid email
+Incorrect email or password: Incorrect email or password
+Don't have an account?: Don't have an account?
+Forgot your password?: Forgot your password?
+
+# ------------ SIGN UP ------------ #
+Sign up: Sign up
+First name: First name
+Last name: Last name
+Already have an account?: Already have an account?
+
+# ------------ FORGOT ------------ #
+Reset your password: Reset your password
+Enter your e-mail address and we'll send you a new temporary password.: Enter your e-mail address and we'll send you a new temporary password.
+Send reset email: Send reset email
+Remembered your password?: Remembered your password?
+Email not found: Email not found
+An email containing a new password has been successfully sent to the address provided.: An email containing a new password has been successfully sent to the address provided.
+
+# ------------ PAGE NOT FOUND ------------ #
+Go to dashboard: Go to dashboard
+Page not found!: Page not found!
+
+
+Save: Save
+Close: Close
