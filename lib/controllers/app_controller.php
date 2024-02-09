@@ -5,7 +5,7 @@ if(!defined('ABSPATH')) {
 }
 
 require_once CORE_PATH . 'system.php';
-require_once MODELS_PATH . 'app_model.php';
+require_once MODELS_PATH . 'folder_model.php';
 require_once HELPERS_PATH . 'components_helper.php';
 
 class AppController extends System {
@@ -15,19 +15,19 @@ class AppController extends System {
     public function __construct() {
         parent::__construct();
         $this->viewsFolder = 'app/';
-        $this->appModel = new AppModel();
         $this->comp = new ComponentsHelper();
+        $this->folderModel = new FolderModel($this->user);
     }
 
     public function index() {
-        $folders = $this->appModel->select(TABLE_FOLDERS.'.*, COUNT('.TABLE_NOTES.'.id) AS total_notes')->left_join(TABLE_NOTES, [TABLE_FOLDERS.'.id' => TABLE_NOTES.'.folder_id'])->where([TABLE_FOLDERS.'.user_id' => $this->user->ID])->group_by(TABLE_FOLDERS.'.id')->get_results();
+        $folders = $this->folderModel->get_folders();
 
         $this->renderData = ['folders' => $folders];
         $this->render(__FUNCTION__);
     }
 
     public function new_folder() {
-        $result = $this->appModel->insert($this->data->folder)->query();
+        $result = $this->folderModel->new_folder($this->data);
 
         if($result) {
             $this->messageStatus = STATUS_SUCCESS;
@@ -40,8 +40,22 @@ class AppController extends System {
         $this->send_json(['success' => $this->messageStatus, 'message' => $message]);
     }
 
+    public function rename_folder() {
+        $result = $this->folderModel->rename_folder($this->data);
+
+        if($result) {
+            $this->messageStatus = STATUS_SUCCESS;
+            $message = $this->comp->alert(['message' => 'Folder name has been updated', 'type' => 'alert-success']);
+        } else {
+            $this->messageStatus = STATUS_ERROR;
+            $message = $this->comp->alert(['message' => 'Unable to update folder name', 'type' => 'alert-danger']);
+        }
+        
+        $this->send_json(['success' => $this->messageStatus, 'message' => $message]);
+    }
+
     public function delete_folder() {
-        $result = $this->appModel->delete()->where(['user_id' => $this->data->user_id, 'id' => $this->data->id])->query();
+        $result = $this->folderModel->delete_folder($this->data->id);
         
         if($result) {
             $this->messageStatus = STATUS_SUCCESS;

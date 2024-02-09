@@ -1,24 +1,41 @@
 jQuery(document).ready(function($) {
 
-    $('.js-create-folder').click(function() {
+    $(document).on('click', '.js-action-folder', function(event) {
+        event.preventDefault();
         const element = $(this);
+        $.folderForm(element);
+    });
 
+    $.folderForm = function(element) {
         swal({
-            text: 'Criar nova pasta',
-            content: "input",
+            text: element.data('swal-title'),
+            content: {
+                element: 'input',
+                attributes: {
+                    value: element.data('name') ?? ''
+                }
+            },
             button: {
-              text: "Criar",
+              text: "Salvar",
               closeModal: false,
             },
         })
         .then(folderName => {
             if(folderName) {
-                element.data('params', `folder[name]:${folderName}`);
+                let params = element.data('params') ?? '';
+                
+                if(params) {
+                    params += `&name:${folderName}`;
+                    element.data('params', params);
+                } else {
+                    element.data('params', `name:${folderName}`);
+                }
+
                 $.processParams(element);
                 swal.close();
             }
         });
-    });
+    }
     
     // Manipula envios de formulários
     $(document).on('submit', '.js-action-submit', function(event) {

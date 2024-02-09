@@ -3,7 +3,7 @@
         <div class="px-3 py-2 menu-bar d-flex align-items-center justify-content-between border-bottom">
             <button class="icon-button btn-menu btn"><i class="bi bi-list"></i></button>
             <h5 class="m-0">Easey Notes</h5>
-            <button class="icon-button btn-new-note btn js-create-folder" data-action="controller:app__new_folder" data-action-success="helper:app__folders" data-update-target=".file-list">
+            <button class="icon-button btn-new-note btn js-action-folder" data-action="controller:app__new_folder" data-action-success="helper:app__folders" data-update-target=".file-list" data-swal-title="{{ 'Create new folder' | trans }}">
                 <i class="bi bi-folder-plus"></i>
             </button>
         </div>
@@ -30,7 +30,7 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <button class="dropdown-item" data-action="controller:app__rename_folder" data-action-success="helper:app__folders" data-update-target=".file-list" data-params="id:{{ folder.id }}">
+                                        <button class="dropdown-item js-action-folder" data-action="controller:app__rename_folder" data-action-success="helper:app__folders" data-update-target=".file-list" data-name="{{ folder.name }}" data-params="id:{{ folder.id }}" data-swal-title="{{ 'Rename folder' | trans }}">
                                             <i class="bi bi-pencil"></i>
                                             <span class="d-inline-block ms-1">{{ 'Rename folder' | trans }}</span>
                                         </button>

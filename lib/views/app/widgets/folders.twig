@@ -15,7 +15,7 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li>
-                        <button class="dropdown-item" data-action="controller:app__rename_folder" data-action-success="helper:app__folders" data-update-target=".file-list" data-params="id:{{ folder.id }}">
+                        <button class="dropdown-item js-action-folder" data-action="controller:app__rename_folder" data-action-success="helper:app__folders" data-update-target=".file-list" data-name="{{ folder.name }}" data-params="id:{{ folder.id }}" data-swal-title="{{ 'Rename folder' | trans }}">
                             <i class="bi bi-pencil"></i>
                             <span class="d-inline-block ms-1">{{ 'Rename folder' | trans }}</span>
                         </button>
