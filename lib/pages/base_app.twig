@@ -25,9 +25,21 @@
                                 </div>
                             </div>
                             <div>
-                                <button class="icon-button btn d-flex align-items-center teste">
+                                <button class="icon-button btn d-flex align-items-center teste" data-bs-toggle="dropdown">
                                     <i class="bi bi-three-dots-vertical w-100"></i>
                                 </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" data-action="controller:app__rename_folder" data-action-success="helper:app__folders" data-update-target=".file-list" data-params="id:{{ folder.id }}">
+                                            <i class="bi bi-pencil"></i>
+                                            <span class="d-inline-block ms-1">{{ 'Rename folder' | trans }}</span>
+                                        </button>
+                                        <button class="dropdown-item js-action-delete" data-action="controller:app__delete_folder" data-action-success="helper:app__folders" data-update-target=".file-list" data-params="id:{{ folder.id }}">
+                                            <i class="bi bi-trash text-danger"></i>
+                                            <span class="d-inline-block ms-1 text-danger">{{ 'Delete' | trans }}</span>
+                                        </button>
+                                    </li>
+                                </ul>
                             </div>
                         </a>
                     </li>

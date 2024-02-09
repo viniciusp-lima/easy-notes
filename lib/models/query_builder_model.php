@@ -109,6 +109,11 @@ class QueryBuilder {
         return $this;
     }
 
+    public function delete() {
+        $this->query .= ' DELETE FROM ' . $this->tableName;
+        return $this;
+    }
+
     public function check_data_type($value) {
         switch($value) {
             case is_int($value):
