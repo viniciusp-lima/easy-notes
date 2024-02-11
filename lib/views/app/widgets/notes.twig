@@ -1,8 +1,41 @@
+{% if notes is not empty %}
 <ul class="notes-list m-0 p-0">
+    {% for note in notes %}
     <li class="note">
-        <a href="" class="d-flex align-items-center gap-3 px-4 py-2">
-            <i class="bi bi-filetype-txt fs-3"></i>
-            <p class="m-0 text-truncate">Note name</p>
+        <a href="" class="d-flex align-items-center justify-content-between gap-3 px-4 py-2">
+            <div class="d-flex align-items-center flex-grow-1 gap-3 overflow-hidden">
+                <i class="bi bi-journal-text fs-4"></i>
+                <p class="m-0 text-truncate">{{ note.name }}</p>
+            </div>
+            <div>
+                <button class="icon-button btn d-flex align-items-center teste" data-bs-toggle="dropdown">
+                    <i class="bi bi-three-dots-vertical w-100"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <button class="dropdown-item js-action-note" data-action="controller:app__rename_note" data-action-success="helper:app__notes" data-update-target=".file-list" data-name="{{ note.name }}" data-params="id:{{ note.id }}&folder_id:{{ folder_id }}" data-swal-title="{{ 'Rename note' | trans }}">
+                            <i class="bi bi-pencil"></i>
+                            <span class="d-inline-block ms-1">{{ 'Rename note' | trans }}</span>
+                        </button>
+                        <button class="dropdown-item js-action-delete" data-action="controller:app__delete_note" data-action-success="helper:app__notes" data-update-target=".file-list" data-params="id:{{ note.id }}&folder_id:{{ folder_id }}">
+                            <i class="bi bi-trash text-danger"></i>
+                            <span class="d-inline-block ms-1 text-danger">{{ 'Delete' | trans }}</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </a>
     </li>
+    {% endfor %}
+    <li>
+        <a href="" class="text-center mt-3 mx-4 py-1 border rounded fs-7 text-secondary d-block js-action-note" id="btn-create-note" data-swal-title="Create new note" data-action="controller:app__new_note" data-action-success="helper:app__notes" data-update-target=".file-list" data-params="folder_id:{{ folder_id }}">{{ 'Create new note' | trans }}</a>
+    </li>
 </ul>
+{% else %}
+<div class="w-100 h-100 d-flex align-items-center justify-content-center">
+    <a href="" class="d-flex flex-column align-items-center bg-transparent js-action-note" data-swal-title="Create new note" data-action="controller:app__new_note" data-action-success="helper:app__notes" data-update-target=".file-list" data-params="folder_id:{{ folder_id }}">
+        <i class="bi bi-journals fs-1 text-secondary"></i>
+        <span class="d-block text-primary fs-7 text-secondary">{{ 'Create your first note' | trans }}</span>
+    </a>
+</div>
+{% endif %}

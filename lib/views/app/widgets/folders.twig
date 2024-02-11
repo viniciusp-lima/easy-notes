@@ -1,7 +1,8 @@
+{% if folders is not empty %}
 <ul class="folder-list m-0 p-0">
     {% for folder in folders %}
     <li class="folder">
-        <a href="" class="d-flex align-items-center justify-content-between gap-3 px-4 py-2">
+        <a href="" class="d-flex align-items-center justify-content-between gap-3 px-4 py-2 js-action-click" data-params="folder_id:{{ folder.id }}" data-action="helper:app__notes" data-update-target=".file-list">
             <div class="d-flex align-items-center flex-grow-1 gap-3 overflow-hidden">
                 <i class="bi bi-folder-fill fs-3"></i>
                 <div class="flex-grow-1 overflow-hidden">
@@ -30,3 +31,11 @@
     </li>
     {% endfor %}
 </ul>
+{% else %}
+<div class="w-100 h-100 d-flex align-items-center justify-content-center">
+    <a href="" class="d-flex flex-column align-items-center bg-transparent js-action-folder" data-action="controller:app__new_folder" data-action-success="helper:app__folders" data-update-target=".file-list" data-swal-title="Create new folder">
+        <i class="bi bi-folder fs-1 text-secondary"></i>
+        <span class="d-block text-primary fs-7 text-secondary">{{ 'Create your first folder' | trans }}</span>
+    </a>
+</div>
+{% endif %}

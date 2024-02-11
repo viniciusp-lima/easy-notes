@@ -5,6 +5,14 @@
     grid-template-columns: 300px 1fr;
 }
 
+.notify-app .left > div:last-child {
+    height: calc(100vh - 49px);
+}
+
+.notify-app .left > div:last-child > div:last-child {
+    height: calc(100vh - 98px);
+}
+
 .icon-button {
     padding: 0;
     width: 32px;
@@ -32,4 +40,14 @@
 
 .folder:hover small {
     color: #fff !important;
+}
+
+#btn-create-note {
+    border-style: dashed !important;
+}
+
+#btn-create-note:hover {
+    opacity: .6;
+    color: #fff !important;
+    border-color: #fff !important;
 }

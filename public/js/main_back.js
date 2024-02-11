@@ -1,27 +1,15 @@
 jQuery(document).ready(function($) {
 
+    $(document).on('click', 'button[data-bs-toggle="dropdown"], .dropdown-item', function(event) {
+        event.stopPropagation();
+    });
+
     $(document).on('click', '.js-action-folder', function(event) {
         event.preventDefault();
         const element = $(this);
-        $.folderForm(element);
-    });
 
-    $.folderForm = function(element) {
-        swal({
-            text: element.data('swal-title'),
-            content: {
-                element: 'input',
-                attributes: {
-                    value: element.data('name') ?? ''
-                }
-            },
-            button: {
-              text: "Salvar",
-              closeModal: false,
-            },
-        })
-        .then(folderName => {
-            if(folderName) {
+        $.swalInput(element)
+            .then(folderName => {
                 let params = element.data('params') ?? '';
                 
                 if(params) {
@@ -32,8 +20,51 @@ jQuery(document).ready(function($) {
                 }
 
                 $.processParams(element);
-                swal.close();
-            }
+            });
+    });
+
+    $(document).on('click', '.js-action-note', function(event) {
+        event.preventDefault();
+        const element = $(this);
+
+        $.swalInput(element)
+            .then(noteName => {
+                let params = element.data('params') ?? '';
+                
+                if(params) {
+                    params += `&name:${noteName}`;
+                    element.data('params', params);
+                } else {
+                    element.data('params', `name:${noteName}`);
+                }
+
+                $.processParams(element);
+            });
+    });
+
+    $.swalInput = function(element) {
+        return new Promise((resolve, reject) => {
+            swal({
+                text: element.data('swal-title'),
+                content: {
+                    element: 'input',
+                    attributes: {
+                        value: element.data('name') ?? ''
+                    }
+                },
+                button: {
+                  text: "Salvar",
+                  closeModal: false,
+                },
+            })
+            .then(result => {
+                if(result) {
+                    resolve(result);
+                    swal.close();
+                }
+            }).catch(error => {
+                reject(error);
+            });
         });
     }
     
